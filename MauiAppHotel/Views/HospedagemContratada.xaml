@@ -3,73 +3,89 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiAppHotel.Views.HospedagemContratada"
              NavigationPage.HasNavigationBar="false"
-             BackgroundColor="{StaticResource Gray100}">
+             BackgroundColor="{StaticResource Black}">
     
-    <VerticalStackLayout VerticalOptions="CenterAndExpand">
+    <ScrollView>
+            
+        <VerticalStackLayout VerticalOptions="Center">
+            <Image Source="quarto.png" 
+                    HorizontalOptions="Center"
+                    Margin="100,-50,100,0"/>
 
-        <Label Text="Suíte Super Luxo"
-               TextColor="{StaticResource Primary}"
-               FontFamily="Kalam"
-               FontSize="50"
-               HorizontalTextAlignment="Center"/>
+            <Label Text="Suíte Super Luxo"
+                    FontAttributes="Bold"
+                    TextColor="{StaticResource White}"
+                    FontSize="30"
+                    HorizontalTextAlignment="Center"/>
 
-        <Frame>
-            <HorizontalStackLayout>
-                
+            <Frame Margin="10">
                 <HorizontalStackLayout>
-                    <Label Text="Adultos: "/>
-                    <Label Text="2" 
-                           TextColor="{StaticResource Primary}"/>
-                </HorizontalStackLayout>
+                    <VerticalStackLayout>
+                        <HorizontalStackLayout Margin="0,10,10,0">
+                            <Label Text="Adultos: "/>
+                            <Label Text="2" 
+                                Margin="20,0,0,0"
+                                FontAttributes="Bold"
+                                TextColor="{StaticResource Black}"/>
+                        </HorizontalStackLayout>
 
-                <HorizontalStackLayout>
-                    <Label Text="Crianças: "/>
-                    <Label Text="1"
-                           TextColor="{StaticResource Primary}"/>
+                        <HorizontalStackLayout Margin="0,10,10,0">
+                            <Label Text="Crianças: "/>
+                            <Label Text="1"
+                                Margin="14,0,0,0"
+                                FontAttributes="Bold"
+                                TextColor="{StaticResource Black}"/>
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
                 </HorizontalStackLayout>
+            </Frame>
+
+            <Frame Margin="10">
+                <Grid ColumnDefinitions="*, *, *"
+                        RowDefinitions="Auto, Auto">
                 
-            </HorizontalStackLayout>
-        </Frame>
+                    <Label Grid.Row="0"
+                            Grid.Column="0"
+                            Text="Check-in"/>
+                    <Label Grid.Row="0"
+                            Grid.Column="1"
+                            Text="Check-out"/>
+                    <Label Grid.Row="0"
+                            Grid.Column="2"
+                            Text="Estadia"/>
 
-        <Frame Margin="10">
-            <Grid ColumnDefinitions="*, *, *"
-                  RowDefinitions="Auto, Auto">
-                <Label Grid.Row="0"
-                       Grid.Column="0"
-                       Text="Check-in"/>
-                <Label Grid.Row="0"
-                       Grid.Column="1"
-                       Text="Check-out"/>
-                <Label Grid.Row="0"
-                       Grid.Column="2"
-                       Text="Estadia"/>
+                    <Label Grid.Row="1"
+                            Grid.Column="0"
+                            Text="27/05/2025"/>
+                    <Label Grid.Row="1"
+                            Grid.Column="1"
+                            Text="30/05/2025"/>
+                    <Label Grid.Row="1"
+                            Grid.Column="2"
+                            Text="3"/>
+                
+                </Grid>
+            </Frame>
 
-                <Label Grid.Row="1"
-                       Grid.Column="0"
-                       Text="27/05/2025"/>
-                <Label Grid.Row="1"
-                       Grid.Column="1"
-                       Text="30/05/2025"/>
-                <Label Grid.Row="1"
-                       Grid.Column="2"
-                       Text="3"/>
-            </Grid>
-        </Frame>
+            <Frame Margin="10">
+                <HorizontalStackLayout>
+                    <Label Text="Valor Total:"
+                            VerticalOptions="Center"
+                            Margin="0,0,20,0"/>
+                    <Label FontAttributes="Bold"
+                            Text="R$ 750,00"/>
+                </HorizontalStackLayout>           
+            </Frame>
 
-        <Frame Margin="10">
-            <HorizontalStackLayout>
-                <Label Text="Valor Total:"/>
-                <Label Text="R$ 750,00"/>
-            </HorizontalStackLayout>           
-        </Frame>
+            <Button Text="Voltar"
+                    HorizontalOptions="Center"
+                    Clicked="Button_Clicked"
+                    BackgroundColor="White"
+                    FontAttributes="Bold"
+                    TextColor="Black"/>
 
-        <Button Text="Voltar"
-                HorizontalOptions="Center"
-                Clicked="Button_Clicked"
-                BackgroundColor="Black"
-                FontAttributes="Bold"/>
+        </VerticalStackLayout>
 
-    </VerticalStackLayout>
-    
+    </ScrollView>
     
 </ContentPage>

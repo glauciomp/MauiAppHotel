@@ -4,20 +4,21 @@
              x:Class="MauiAppHotel.Views.ContratacaoHospedagem"
              Title="Reserve sua Estadia"
              NavigationPage.HasNavigationBar="false"
-             BackgroundColor="{StaticResource Gray100}">
+             BackgroundColor="{StaticResource Black}">
+    
     <ScrollView>
 
         <VerticalStackLayout VerticalOptions="Center"
                              Padding="10">
             <Image Source="hotel1.png" 
                    HorizontalOptions="Center"
-                   Margin="100,-50,100,0"/>
+                   Margin="100,-40,100,0"/>
 
             <Label Text="Detalhes de sua Reserva"
-                   FontFamily="Kalam"
+                   FontAttributes="Bold"
                    FontSize="30"
-                   HorizontalOptions="Center"            
-                   TextColor="{StaticResource Primary}"/>
+                   HorizontalOptions="CenterAndExpand"         
+                   TextColor="{StaticResource White}"/>
 
             <Frame Padding="10"
                    Margin="10"
@@ -31,11 +32,12 @@
                         <Label Grid.Row="0" 
                                Grid.Column="0"
                                Text="Número de Adultos:"
+                               FontAttributes="Bold"
                                VerticalOptions="Center"/>
 
                         <Label Grid.Row="0" 
                                Grid.Column="1"
-                               TextColor="{StaticResource Primary}"
+                               TextColor="{StaticResource Black}"                              
                                Text="{Binding Value}"
                                VerticalOptions="Center"
                                BindingContext="{x:Reference stp_adultos}"/>
@@ -51,11 +53,13 @@
                         <Label Grid.Row="1" 
                                Grid.Column="0"
                                Text="Número de Crianças:"
+                               FontAttributes="Bold"
+                               Margin="0,0,10,0"
                                VerticalOptions="Center"/>
 
                         <Label Grid.Row="1" 
                                Grid.Column="1"
-                               TextColor="{StaticResource Primary}"
+                               TextColor="{StaticResource Black}"
                                Text="{Binding Value}"
                                VerticalOptions="Center"
                                BindingContext="{x:Reference stp_criancas}"/>
@@ -68,38 +72,43 @@
                                  Increment="1"
                                  Margin="30,10,0,10"/>
                     </Grid>
+                    <Label FontAttributes="Bold"
+                           Text="Selecione sua Acomodação"/>
 
-                    <Picker x:Name="pck_quarto"
-                            Title="Selecione sua Acomodação"
+                    <Picker x:Name="pck_quarto"                            
                             ItemDisplayBinding="{Binding Descricao}"/>
 
                 </VerticalStackLayout>
 
             </Frame>
 
-
             <Frame Padding="10"
                    Margin="10"
                    CornerRadius="25">
+                
                 <VerticalStackLayout>
-                    <Label Text="Período da Estadia"
+                    <Label FontAttributes="Bold"
+                           Text="Período da Estadia"
                            Margin="0,0,10,10"/>
 
-                    <HorizontalStackLayout>                        
-                        <Label Text="Check-in"
-                               VerticalTextAlignment="Center"
-                               Margin="0,0,30,0"/>
-                        <DatePicker x:Name="dtpck_checkin"
-                                    Format="dd/MM/yyyy"
-                                    DateSelected="dtpck_checkin_DateSelected"/>                        
-                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="20">
+                        <VerticalStackLayout>
+                            <Label Text="Check-in"
+                                   FontAttributes="Bold"                                   
+                                   Margin="0,0,0,5"/>
+                            <DatePicker x:Name="dtpck_checkin"
+                                        Format="dd/MM/yyyy"
+                                        DateSelected="dtpck_checkin_DateSelected"/>
+                        </VerticalStackLayout>
 
-                    <HorizontalStackLayout>
-                        <Label Text="Check-out"
-                               VerticalOptions="Center"
-                               Margin="0,0,20,0"/>
-                        <DatePicker x:Name="dtpck_checkout"
-                                    Format="dd/MM/yyyy"/>
+                        <VerticalStackLayout>
+                            <Label Text="Check-out"
+                                   FontAttributes="Bold"
+                                   Margin="0,0,0,5"/>
+                            <DatePicker x:Name="dtpck_checkout"
+                                        Format="dd/MM/yyyy"/>
+                        </VerticalStackLayout>
+
                     </HorizontalStackLayout>
 
                 </VerticalStackLayout>
@@ -111,15 +120,17 @@
                                    Spacing="20">
 
                 <Button Text="Avançar" 
-                        BackgroundColor="{StaticResource Black}"
+                        BackgroundColor="{StaticResource White}"
                         FontAttributes="Bold"
+                        TextColor="Black"
                         WidthRequest="120"
                         Clicked="Button_Clicked"/>
 
                 <Button Text="Sobre"
                         Clicked="OnSobreButtonClicked"
-                        BackgroundColor="{StaticResource Black}"
+                        BackgroundColor="{StaticResource  White}"
                         FontAttributes="Bold"
+                        TextColor="black"
                         WidthRequest="120"/>
 
             </HorizontalStackLayout>
