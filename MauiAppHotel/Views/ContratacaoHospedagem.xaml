@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppHotel.Views.ContratacaoHospedagem"
+             Title="Reserve sua Estadia"
+             NavigationPage.HasNavigationBar="false"
+             BackgroundColor="{StaticResource Gray100}">
+    <ScrollView>
+
+        <VerticalStackLayout VerticalOptions="Center"
+                             Padding="10">
+            <Image Source="hotel1.png" 
+                   HorizontalOptions="Center"
+                   Margin="100,-50,100,0"/>
+
+            <Label Text="Detalhes de sua Reserva"
+                   FontFamily="Kalam"
+                   FontSize="30"
+                   HorizontalOptions="Center"            
+                   TextColor="{StaticResource Primary}"/>
+
+            <Frame Padding="10"
+                   Margin="10"
+                   CornerRadius="30"
+                   BorderColor="Black">
+
+                <VerticalStackLayout>
+                    <Grid RowDefinitions="Auto, Auto"
+                          ColumnDefinitions="auto, auto, auto">
+
+                        <Label Grid.Row="0" 
+                               Grid.Column="0"
+                               Text="Número de Adultos:"
+                               VerticalOptions="Center"/>
+
+                        <Label Grid.Row="0" 
+                               Grid.Column="1"
+                               TextColor="{StaticResource Primary}"
+                               Text="{Binding Value}"
+                               VerticalOptions="Center"
+                               BindingContext="{x:Reference stp_adultos}"/>
+
+                        <Stepper Grid.Row="0" 
+                                 Grid.Column="2"
+                                 Margin="30,0,0,0"
+                                 x:Name="stp_adultos"
+                                 Minimum="0"
+                                 Maximum="10"
+                                 Increment="1"/>
+
+                        <Label Grid.Row="1" 
+                               Grid.Column="0"
+                               Text="Número de Crianças:"
+                               VerticalOptions="Center"/>
+
+                        <Label Grid.Row="1" 
+                               Grid.Column="1"
+                               TextColor="{StaticResource Primary}"
+                               Text="{Binding Value}"
+                               VerticalOptions="Center"
+                               BindingContext="{x:Reference stp_criancas}"/>
+
+                        <Stepper Grid.Row="1" 
+                                 Grid.Column="2"
+                                 x:Name="stp_criancas"
+                                 Minimum="0"
+                                 Maximum="10"
+                                 Increment="1"
+                                 Margin="30,10,0,10"/>
+                    </Grid>
+
+                    <Picker x:Name="pck_quarto"
+                            Title="Selecione sua Acomodação"
+                            ItemDisplayBinding="{Binding Descricao}"/>
+
+                </VerticalStackLayout>
+
+            </Frame>
+
+
+            <Frame Padding="10"
+                   Margin="10"
+                   CornerRadius="25">
+                <VerticalStackLayout>
+                    <Label Text="Período da Estadia"
+                           Margin="0,0,10,10"/>
+
+                    <HorizontalStackLayout>                        
+                        <Label Text="Check-in"
+                               VerticalTextAlignment="Center"
+                               Margin="0,0,30,0"/>
+                        <DatePicker x:Name="dtpck_checkin"
+                                    Format="dd/MM/yyyy"
+                                    DateSelected="dtpck_checkin_DateSelected"/>                        
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout>
+                        <Label Text="Check-out"
+                               VerticalOptions="Center"
+                               Margin="0,0,20,0"/>
+                        <DatePicker x:Name="dtpck_checkout"
+                                    Format="dd/MM/yyyy"/>
+                    </HorizontalStackLayout>
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <HorizontalStackLayout Grid.Row="6"  
+                                   Grid.ColumnSpan="2"
+                                   HorizontalOptions="Center"
+                                   Spacing="20">
+
+                <Button Text="Avançar" 
+                        BackgroundColor="{StaticResource Black}"
+                        FontAttributes="Bold"
+                        WidthRequest="120"
+                        Clicked="Button_Clicked"/>
+
+                <Button Text="Sobre"
+                        Clicked="OnSobreButtonClicked"
+                        BackgroundColor="{StaticResource Black}"
+                        FontAttributes="Bold"
+                        WidthRequest="120"/>
+
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+</ContentPage>
