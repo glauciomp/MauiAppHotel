@@ -119,7 +119,7 @@
                                    HorizontalOptions="Center"
                                    Spacing="20">
 
-                <Button Text="Avançar" 
+                <Button Text="Reservar" 
                         BackgroundColor="{StaticResource White}"
                         FontAttributes="Bold"
                         TextColor="Black"

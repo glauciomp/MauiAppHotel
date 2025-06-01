@@ -1,3 +1,4 @@
+using MauiAppHotel.Models;
 using Microsoft.VisualBasic;
 
 namespace MauiAppHotel.Views;
@@ -14,7 +15,8 @@ public partial class ContratacaoHospedagem : ContentPage
         pck_quarto.ItemsSource = PropriedadesApp.lista_quartos; // indo buscar as propriedades que foram criadas para os 4 quartos em app.xaml.cs
 
         dtpck_checkin.MinimumDate = DateTime.Now; // setando a data mínima do checkin sempre para a data ataul (hoje)
-        dtpck_checkin.MaximumDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month + 1, DateTime.Now.Day); // definindo o mínimo de dias que o hóspede pode ficar
+        dtpck_checkin.MaximumDate = DateTime.Now.AddMonths(1); 
+        // definindo o mínimo de dias que o hóspede pode ficar
 
         dtpck_checkout.MinimumDate = dtpck_checkin.Date.AddDays(1); // travar o checkout para no mínimo + 1 dia, para não ser possível escolher data no passado;
         dtpck_checkout.MaximumDate = dtpck_checkin.Date.AddMonths(6); // travar o checkou para no máximo 6 meses, não permitindo escolher mais que isso;
@@ -35,15 +37,35 @@ public partial class ContratacaoHospedagem : ContentPage
     }
 
     private async void Button_Clicked(Object sender, EventArgs e)
-    {
+    { // definido o método como assincrono para executar na ordem
         try
         {
-            Navigation.PushAsync(new HospedagemContratada());
+            Hospedagem h = new Hospedagem
+            {
+                QuartoSelecionado = (Quarto)pck_quarto.SelectedItem,
+                // ctrl + espaço para trazer os campos da nossa classe
+                QntAdultos = Convert.ToInt32(stp_adultos.Value),
+                // convertendo o valor do stepper para inteiro pois o usuário é quem está digitando
+                QntCriancas = Convert.ToInt32(stp_criancas.Value),
+                DataCheckIn = dtpck_checkin.Date,
+                DataCheckOut = dtpck_checkout.Date,
+
+                // assim está feito o nosso objeto, nossa model inteira e já preenchida e pronta para enviar
+                // para hospedagem contratada
+            };
+            await Navigation.PushAsync(new HospedagemContratada()
+            {
+                BindingContext = h // passando o contexto de dados para a página HospedagemContratada
+            });
+            // quando colocamos como assincrono, precisamos também fazer a navegação esperar, então
+            // colocamos o awayt no try, tanto na naggação quanto no display alert
+
+
         }
         catch (Exception ex)
         {
-            DisplayAlert("Ops", ex.Message, "Ok");
-            
+            await DisplayAlert("Ops", ex.Message, "Ok");
+
         }
     }
     

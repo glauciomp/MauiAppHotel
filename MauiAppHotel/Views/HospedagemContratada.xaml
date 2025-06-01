@@ -12,7 +12,7 @@
                     HorizontalOptions="Center"
                     Margin="100,-50,100,0"/>
 
-            <Label Text="Suíte Super Luxo"
+            <Label Text="{Binding QuartoSelecionado.Descricao}"
                     FontAttributes="Bold"
                     TextColor="{StaticResource White}"
                     FontSize="30"
@@ -23,7 +23,7 @@
                     <VerticalStackLayout>
                         <HorizontalStackLayout Margin="0,10,10,0">
                             <Label Text="Adultos: "/>
-                            <Label Text="2" 
+                            <Label Text="{Binding QntAdultos}" 
                                 Margin="20,0,0,0"
                                 FontAttributes="Bold"
                                 TextColor="{StaticResource Black}"/>
@@ -31,7 +31,7 @@
 
                         <HorizontalStackLayout Margin="0,10,10,0">
                             <Label Text="Crianças: "/>
-                            <Label Text="1"
+                            <Label Text="{Binding QntCriancas}"
                                 Margin="14,0,0,0"
                                 FontAttributes="Bold"
                                 TextColor="{StaticResource Black}"/>
@@ -56,13 +56,13 @@
 
                     <Label Grid.Row="1"
                             Grid.Column="0"
-                            Text="27/05/2025"/>
+                            Text="{Binding DataCheckIn, StringFormat='{}{0:dd/MM/yyyy}'}"/>
                     <Label Grid.Row="1"
                             Grid.Column="1"
-                            Text="30/05/2025"/>
+                            Text="{Binding DataCheckOut, StringFormat='{}{0:dd/MM/yyyy}'}"/>
                     <Label Grid.Row="1"
                             Grid.Column="2"
-                            Text="3"/>
+                            Text="{Binding Estadia}"/>
                 
                 </Grid>
             </Frame>
@@ -73,7 +73,7 @@
                             VerticalOptions="Center"
                             Margin="0,0,20,0"/>
                     <Label FontAttributes="Bold"
-                            Text="R$ 750,00"/>
+                            Text="{Binding ValorTotal, StringFormat='{}{0:c}'}"/>
                 </HorizontalStackLayout>           
             </Frame>
 
